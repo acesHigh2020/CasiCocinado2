@@ -128,14 +128,20 @@ public class Partida extends Observador{
 			m.repartir(jugadores);
 			System.out.println("RONDA NUMERO "+ronda);
 			
-			
-			for(int i = 0; i < jugadores.size() && m.getCantidadCartas()>0 && jugadoresEstables>1; i++)
+			while(m.getCantidadCartas()>0) {
+				System.out.println("La cantidad de cartas en el mazo es de : "+m.getCantidadCartas());
+
+			for(int i = 0; i < jugadores.size() && jugadoresEstables>1; i++)
 				if(jugadores.get(i).getEstado()=="Jugando") {
 					System.out.println("Turno del jugador: "+jugadores.get(i).getNombre());
 					jugadores.get(i).jugada(m,jugadores,d);///Verifica que el jugador pueda jugar///para que le toque el turno
 				System.out.println("*************************************");	
 				}
 				else jugadoresEstables--;
+			
+			
+			
+			}
 			///ACA SE DESARROLLA CADA RONDA: SE DESARROLLAN LOS TURNOS Y SI SE DETECTA UN JUGADOR EN CONDICION DE FUERA DE RONDA
 			///SE RESTA LA CANTIDAD DE JUGADORES ESTABLES DE LA PARTIDA 
 			
