@@ -24,9 +24,9 @@ public class Mano {
 		return mano.get(n);
 	}
 	public Carta getReferencia() {
-		if(mano.get(0)!=null)
-		return mano.get(0);
-		else return mano.get(1);
+		if(mano.size()!=0)
+			return mano.get(0);
+		return null;
 	}
 	
 	public boolean estaCarta(Carta c) {
@@ -42,7 +42,7 @@ public class Mano {
 	@Override
 	public String toString() {
 		String nue = mano.get(0).toString();
-		if(mano.get(1)!=null)
+		if(mano.size()>1)
 			nue+=("\n"+mano.get(1).toString());
 		return nue;
 	}

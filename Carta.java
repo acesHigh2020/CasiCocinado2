@@ -22,7 +22,7 @@ public abstract class Carta{
 		
     }
 	
-	public abstract void activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m);
+	public abstract boolean activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m);
 
 	public int getPuntajeFuerza() {
 		return puntajeFuerza;
@@ -31,7 +31,7 @@ public abstract class Carta{
 
 	@Override
 	public String toString() {
-		return "\nCarta [nombre=" + nombre + ", \npuntajeFuerza=" + puntajeFuerza + ", \ndescEfecto=" + descEfecto + "]";
+		return "\nCarta " + nombre + "\nPuntajeFuerza = " + puntajeFuerza + "\nDescripcion Efecto = " + descEfecto;
 	}
 	
 	public String getNombre() {

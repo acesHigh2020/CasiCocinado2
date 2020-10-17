@@ -9,8 +9,9 @@ public class Condesa extends Carta{
 	}
 
 	@Override
-	public void activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
+	public boolean activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
 		///ESTE EFECTO NO SE ACTIVA NUNCA PORQUE YA ESTA PREDEFINIDO EN LA CLASE JUGADOR
+		return false;
 	}
 
 }

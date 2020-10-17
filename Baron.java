@@ -10,10 +10,9 @@ public class Baron extends Carta{
 	}
 
 	@Override
-	public void activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
-		
+	public boolean activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
+		boolean valor = false;
 		int i=1, numeroJugador=-1, resultadoComparacion;
-		Jugador jugadorElegido = null;
 		Scanner ingresoTeclado = new Scanner(System.in);
 		
 		for (Jugador jug : listaJugadores) {	///METE EN UN VECTOR A LOS JUGADORES SELECCIONABLES
@@ -51,19 +50,21 @@ public class Baron extends Carta{
 		resultadoComparacion = cartaJugador.compararCarta(cartaJugadorElijo);//RETORNA QUE CARTA ES MAYOR
 		
 		if(resultadoComparacion > 0) {			///EL JUGADOR QUE TENGA MENOR NUMERO DE CARTA ES DECLARADO FUERA DE LA RONDA
-			
-			jugadorElegido.setEstado("Fuera de Ronda");
-			System.out.println("Jugador" + jugadorElegido.getNombre()+ "Quedo eliminado");
+			valor = true;
+			jugElegido.setEstado("Fuera de Ronda");
+			System.out.println("Jugador" + jugElegido.getNombre()+ "Quedo eliminado");
 		}		
 		else if(resultadoComparacion < 0) {
 			jugador.setEstado("Fuera de Ronda");
 			System.out.println("Jugador" + jugador.getNombre() + "quedo eliminado");
+			valor = true;
 		}
 		else {
 			System.out.println("Empate de Fuerza de Cartas");
 		}
 		}
 	else System.out.println("No se le pudo aplicar el efecto al jugador!!!");
+	return valor;
 	}
 	
 }

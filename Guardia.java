@@ -10,15 +10,17 @@ public class Guardia extends Carta {
 	}
 
 	@Override
-	public void activarEfecto (Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
-		
+	public boolean activarEfecto (Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
+		boolean valor = false;
 		int i=1, numeroJugador=-1, cartaSeleccionada=0;
 		Scanner ingresoTeclado = new Scanner(System.in);
+		
+		System.out.println("\nLos Jugadores a elegir son:");
 		
 		for (Jugador jug : listaJugadores) {	///METE EN UN VECTOR A LOS JUGADORES SELECCIONABLES
 			
 			if(jugador!=jug && jug.getEstado().compareTo("Jugando")==0) 
-				System.out.println("Jugador" + i + ":" + jug.getNombre());
+				System.out.println("Jugador " + i + " : " + jug.getNombre());
 				i++;
 				
 		}
@@ -29,7 +31,7 @@ public class Guardia extends Carta {
 //		}while((numeroJugador < 0 || numeroJugador >= listaJugadores.size()) && listaJugadores.get(numeroJugador)!=jugador);		///HASTA ELEGIR UN JUGADOR VALIDO DEL VECTOR
 		
 		while(numeroJugador == -1) {
-			 System.out.println("Ingrese numero de jugador a seleccionar");
+			 System.out.println("\n-------Ingrese numero de jugador a seleccionar:");
 				numeroJugador = ingresoTeclado.nextInt()-1;
 				if(numeroJugador <0 || numeroJugador>=listaJugadores.size())
 					numeroJugador=-1;
@@ -39,7 +41,6 @@ public class Guardia extends Carta {
 		 }
 		
 		do {
-			System.out.println("Elija la carta que creas que tiene tu oponente:");
 			System.out.println("2: Sacerdote");
 			System.out.println("3: Baron");
 			System.out.println("4: Mucama");
@@ -47,18 +48,24 @@ public class Guardia extends Carta {
 			System.out.println("6: Rey");
 			System.out.println("7: Condesa");
 			System.out.println("8: Princesa");
+			System.out.println("\n-------Elija la carta que creas que tiene tu oponente:");
 			cartaSeleccionada = ingresoTeclado.nextInt();
 		}while(cartaSeleccionada < 2 || cartaSeleccionada > 8);		///HASTA ELEGIR UN NUMERO DE CARTA VALIDA
 		
 		
 		Jugador jugadorSeleccionado = listaJugadores.get(numeroJugador);
-		if(jugadorSeleccionado.getEstado().compareTo("Jugando")==0)
-		if( cartaSeleccionada == jugadorSeleccionado.getCartaMano().getPuntajeFuerza()) {	
+		if(jugadorSeleccionado.getEstado().compareTo("Jugando")==0) {
+		if(jugadorSeleccionado.getReferenciaCarta()!=null && cartaSeleccionada== jugadorSeleccionado.getFuerzaCarta()) {	
 			jugadorSeleccionado.setEstado("Fuera de Ronda");
+			valor = true;
 			System.out.println("Jugador" + listaJugadores.get(numeroJugador).getNombre() + "Quedo eliminado");
 			///SI EL NUMERO DE CARTA SELECCIONADA QUE ELIGIO ES IGUAL A LA FUERZA ENTONCES EL JUGADOR SELECCIONADO QUEDA FUERA DE RONDA
 		}
+		else System.out.println("El jugador no posee esa carta");
+		}
 		else System.out.println("No se le pudo aplicar el efecto al jugador!!!");
+	
+		return valor;
 	}
 
 }

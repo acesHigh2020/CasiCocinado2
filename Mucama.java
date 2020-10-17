@@ -9,10 +9,11 @@ public class Mucama extends Carta{
 	}
 
 	@Override
-	public void activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
+	public boolean activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
 		
 		jugador.setEstado("Inmune");	///SOLAMENTE SETEA EL ESTADO A INMUNE POR 1 RONDA
 		///FALTA MANEJAR EL TEMA DE RONDAS
+		return false;
 	}
 	
 }

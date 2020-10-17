@@ -10,6 +10,13 @@ public class Main {
 		Jugador j2 = new Jugador("Renata");
 		j2.unirsePartida(pp);
 		
+//		Jugador j3 = new Jugador("Nestor");
+//		j3.unirsePartida(pp);
+//		
+//		Jugador j4 = new Jugador("Lopez");
+//		j4.unirsePartida(pp);
+		
+		
 		j1.iniciarPartida(pp);
 		
 	}

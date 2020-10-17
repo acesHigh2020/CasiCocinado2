@@ -9,9 +9,10 @@ public class Princesa extends Carta{
 	}
 
 	@Override
-	public void activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
+	public boolean activarEfecto(Jugador jugador, ArrayList<Jugador> listaJugadores, Descarte d, Mazo m) {
 		jugador.setEstado("Fuera de Ronda");
 		
+		return true;
 	}
 	
 }
